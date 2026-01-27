@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
-  const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL;
 
   const [form, setForm] = useState({
     email: "",
@@ -29,14 +29,11 @@ function Login() {
     try {
       setLoading(true);
 
-      const res = await fetch("http://localhost:3002/login", {
+      const res = await fetch(`${API}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({
-          email: form.email,
-          password: form.password,
-        }),
+        body: JSON.stringify(form),
       });
 
       const data = await res.json();
@@ -48,10 +45,10 @@ function Login() {
 
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      window.location.href = "http://localhost:3001/dashboard";
+      window.location.href = process.env.REACT_APP_DASHBOARD_URL;
     } catch (err) {
       alert("Login error");
-      console.log(err);
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -59,9 +56,9 @@ function Login() {
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md rounded-xl border bg-white p-6 sm:p-8">
+      <div className="w-full max-w-md p-6 bg-white border rounded-xl sm:p-8">
         <h1 className="text-2xl font-semibold text-gray-900">Login</h1>
-        <p className="mt-2 text-gray-600 text-sm">
+        <p className="mt-2 text-sm text-gray-600">
           Login to access your dashboard.
         </p>
 
