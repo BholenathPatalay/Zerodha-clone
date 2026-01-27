@@ -1,11 +1,16 @@
 const User = require("../model/UserModel");
-const { createSecretToken } = require("../util/secretToken");
 const bcrypt = require("bcrypt");
+const { createSecretToken } = require("../util/secretToken");
 const { setTokenCookie, clearTokenCookie } = require("../util/setTokenCookie");
 
+/* =========================
+   SIGNUP CONTROLLER
+========================= */
 module.exports.Signup = async (req, res) => {
   try {
-    const { email, username, password, createdAt } = req.body;
+    const email = req.body.email?.trim();
+    const username = req.body.username?.trim();
+    const password = req.body.password?.trim();
 
     if (!email || !username || !password) {
       return res.status(400).json({
@@ -28,11 +33,9 @@ module.exports.Signup = async (req, res) => {
       email,
       username,
       password: hashedPassword,
-      createdAt,
     });
 
     const token = createSecretToken(user._id);
-
     setTokenCookie(res, token);
 
     return res.status(201).json({
@@ -45,7 +48,7 @@ module.exports.Signup = async (req, res) => {
       },
     });
   } catch (err) {
-    console.log("User Signup Err", err);
+    console.log("User Signup Error:", err);
     return res.status(500).json({
       message: "Signup Error",
       success: false,
@@ -53,9 +56,13 @@ module.exports.Signup = async (req, res) => {
   }
 };
 
+/* =========================
+   LOGIN CONTROLLER
+========================= */
 module.exports.Login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const email = req.body.email?.trim();
+    const password = req.body.password?.trim();
 
     if (!email || !password) {
       return res.status(400).json({
@@ -72,8 +79,9 @@ module.exports.Login = async (req, res) => {
       });
     }
 
-    const auth = await bcrypt.compare(password, user.password);
-    if (!auth) {
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
       return res.status(401).json({
         message: "Incorrect email or password",
         success: false,
@@ -81,7 +89,6 @@ module.exports.Login = async (req, res) => {
     }
 
     const token = createSecretToken(user._id);
-
     setTokenCookie(res, token);
 
     return res.status(200).json({
@@ -94,7 +101,7 @@ module.exports.Login = async (req, res) => {
       },
     });
   } catch (err) {
-    console.log("Login Error", err);
+    console.log("Login Error:", err);
     return res.status(500).json({
       message: "Login Error",
       success: false,
@@ -102,6 +109,9 @@ module.exports.Login = async (req, res) => {
   }
 };
 
+/* =========================
+   LOGOUT CONTROLLER
+========================= */
 module.exports.Logout = async (req, res) => {
   try {
     clearTokenCookie(res);
@@ -111,6 +121,7 @@ module.exports.Logout = async (req, res) => {
       success: true,
     });
   } catch (err) {
+    console.log("Logout Error:", err);
     return res.status(500).json({
       message: "Logout Error",
       success: false,
