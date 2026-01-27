@@ -20,7 +20,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: ["http://localhost:5000", "http://localhost:3001"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
@@ -29,9 +29,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/test", (req, res) => {
-  res.send("Backend working fine");
-});
+
 
 app.use("/", authRoute);
 

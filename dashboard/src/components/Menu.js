@@ -41,7 +41,7 @@ const Menu = () => {
     } catch (err) {
       console.log("Logout error:", err);
     } finally {
-      window.location.href = "http://localhost:3000/login";
+      window.location.href = "http://localhost:5000/login";
     }
   };
 
