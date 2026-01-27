@@ -1,7 +1,7 @@
 const User = require("../model/UserModel");
 const { createSecretToken } = require("../util/secretToken");
 const bcrypt = require("bcrypt");
-const {setTokenCookie, clearTokenCookie} = require('../util/setTokenCookie')
+const { setTokenCookie, clearTokenCookie } = require("../util/setTokenCookie");
 
 module.exports.Signup = async (req, res) => {
   try {
@@ -22,7 +22,14 @@ module.exports.Signup = async (req, res) => {
       });
     }
 
-    const user = await User.create({ email, username, password, createdAt });
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await User.create({
+      email,
+      username,
+      password: hashedPassword,
+      createdAt,
+    });
 
     const token = createSecretToken(user._id);
 
@@ -99,7 +106,6 @@ module.exports.Logout = async (req, res) => {
   try {
     clearTokenCookie(res);
 
-    
     return res.status(200).json({
       message: "User logged out successfully",
       success: true,
