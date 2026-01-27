@@ -21,7 +21,7 @@ const app = express();
 const corsOptions = {
   origin: [
     "https://zerodha-frontend-uex2.onrender.com",
-    "https://zerodha-dashboard.onrender.com",
+    "https://zerodha-dashboard-jkmq.onrender.com",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
