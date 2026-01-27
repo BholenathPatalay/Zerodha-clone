@@ -8,7 +8,9 @@ const Menu = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [username, setUsername] = useState("USER");
 
-  const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
+  const FRONTEND_URL =
+    process.env.REACT_APP_FRONTEND_URL ||
+    "https://zerodha-frontend-uex2.onrender.com";
 
   useEffect(() => {
     const fetchUser = async () => {
