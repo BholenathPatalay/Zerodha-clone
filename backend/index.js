@@ -18,18 +18,22 @@ const uri = process.env.ATLASDB_URL;
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["http://localhost:5000", "http://localhost:3001"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }),
-);
+const corsOptions = {
+  origin: [
+    "https://zerodha-frontend-uex2.onrender.com",
+    "https://zerodha-dashboard.onrender.com",
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
-
-
 
 app.use("/", authRoute);
 
