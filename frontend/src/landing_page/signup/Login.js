@@ -45,7 +45,9 @@ function Login() {
 
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      window.location.href = process.env.REACT_APP_DASHBOARD_URL;
+      window.location.href =
+        process.env.REACT_APP_DASHBOARD_URL ||
+        "https://zerodha-dashboard-jkmq.onrender.com";
     } catch (err) {
       alert("Login error");
       console.error(err);
