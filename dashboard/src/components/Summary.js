@@ -7,6 +7,10 @@ const Summary = () => {
   const [isExpanded, setIsExpanded] = useState(false); // For mobile expansion
 
   useEffect(() => {
+    const FRONTEND_URL =
+      process.env.REACT_APP_FRONTEND_URL ||
+      "https://zerodha-frontend-uex2.onrender.com";
+
     const loadData = async () => {
       try {
         const authRes = await api.get("/checkAuth", { withCredentials: true });
@@ -15,7 +19,7 @@ const Summary = () => {
         const holdingsRes = await api.get("/api/holdings");
         setHoldings(holdingsRes.data);
       } catch (err) {
-        window.location.href = "http://localhost:3000/login";
+        window.location.assign(`${FRONTEND_URL}/login`);
       }
     };
 
