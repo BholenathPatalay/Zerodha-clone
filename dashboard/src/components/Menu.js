@@ -13,6 +13,8 @@ const Menu = () => {
       process.env.REACT_APP_FRONTEND_URL ||
       "https://zerodha-frontend-uex2.onrender.com";
 
+      console.log("FRONTEND_URL =", process.env.REACT_APP_FRONTEND_URL);
+
     const fetchUser = async () => {
       try {
         const res = await api.get("/checkAuth", {
@@ -20,6 +22,7 @@ const Menu = () => {
         });
         setUsername(res.data.user || "USER");
       } catch (err) {
+        console.log("Redirecting to:", FRONTEND_URL);
         window.location.href = `${FRONTEND_URL}/login`;
       }
     };
