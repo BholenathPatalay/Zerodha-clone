@@ -13,11 +13,9 @@ const Menu = () => {
       process.env.REACT_APP_FRONTEND_URL ||
       "https://zerodha-frontend-uex2.onrender.com";
 
-<<<<<<< HEAD
     console.log("FRONTEND_URL =", process.env.REACT_APP_FRONTEND_URL);
-=======
-      console.log("FRONTEND_URL =", process.env.REACT_APP_FRONTEND_URL);
->>>>>>> d8ae62aaf51a2c6a640fe46d3a7f755201e3d1e8
+
+    console.log("FRONTEND_URL =", process.env.REACT_APP_FRONTEND_URL);
 
     const fetchUser = async () => {
       try {
