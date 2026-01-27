@@ -8,11 +8,11 @@ const Menu = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [username, setUsername] = useState("USER");
 
-  const FRONTEND_URL =
-    process.env.REACT_APP_FRONTEND_URL ||
-    "https://zerodha-frontend-uex2.onrender.com";
-
   useEffect(() => {
+    const FRONTEND_URL =
+      process.env.REACT_APP_FRONTEND_URL ||
+      "https://zerodha-frontend-uex2.onrender.com";
+
     const fetchUser = async () => {
       try {
         const res = await api.get("/checkAuth", {
@@ -25,7 +25,7 @@ const Menu = () => {
     };
 
     fetchUser();
-  }, [FRONTEND_URL]);
+  }, []);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -42,6 +42,10 @@ const Menu = () => {
   };
 
   const handleLogout = async () => {
+    const FRONTEND_URL =
+      process.env.REACT_APP_FRONTEND_URL ||
+      "https://zerodha-frontend-uex2.onrender.com";
+
     try {
       await api.post("/logout", {}, { withCredentials: true });
     } catch (err) {
