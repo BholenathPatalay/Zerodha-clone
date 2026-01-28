@@ -14,18 +14,18 @@ function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between max-w-6xl px-4 py-3 mx-auto sm:px-6 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
-            src="media/images/logo.svg"
+            src="/media/images/logo.svg"
             alt="Logo"
-            className="h-7 w-auto sm:h-8"
+            className="w-auto h-7 sm:h-8"
           />
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="items-center hidden gap-8 lg:flex">
           {links.map((link) => (
             <li key={link.name}>
               <Link
@@ -41,7 +41,7 @@ function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 lg:hidden"
+          className="flex items-center justify-center p-2 text-gray-700 rounded-md hover:bg-gray-100 lg:hidden"
           aria-label="Toggle menu"
         >
           <div className="space-y-1">
@@ -54,8 +54,8 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="border-t bg-white lg:hidden">
-          <ul className="mx-auto flex max-w-6xl flex-col px-4 py-4 sm:px-6 lg:px-8">
+        <div className="bg-white border-t lg:hidden">
+          <ul className="flex flex-col max-w-6xl px-4 py-4 mx-auto sm:px-6 lg:px-8">
             {links.map((link) => (
               <li key={link.name}>
                 <Link
