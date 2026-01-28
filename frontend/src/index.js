@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
+
+import Navbar from "./landing_page/Navbar";
+import Footer from "./landing_page/Footer";
 
 import HomePage from "./landing_page/home/HomePage";
 import Signup from "./landing_page/signup/Signup";
@@ -10,36 +13,81 @@ import About from "./landing_page/about/AboutPage";
 import ProductPage from "./landing_page/products/ProductsPage";
 import PricingPage from "./landing_page/pricing/PricingPage";
 import SupportPage from "./landing_page/support/SupportPage";
-import Navbar from "./landing_page/Navbar";
-import Footer from "./landing_page/Footer";
 import NotFound from "./landing_page/NotFound";
 
-const Layout = () => {
-  return (
-    <>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </>
-  );
-};
+const Layout = ({ children }) => (
+  <>
+    <Navbar />
+    {children}
+    <Footer />
+  </>
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="login" element={<Login />} />
-        <Route path="about" element={<About />} />
-        <Route path="product" element={<ProductPage />} />
-        <Route path="pricing" element={<PricingPage />} />
-        <Route path="support" element={<SupportPage />} />
+      {/* Landing pages */}
+      <Route
+        path="/"
+        element={
+          <Layout>
+            <HomePage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <Layout>
+            <Signup />
+          </Layout>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <Layout>
+            <Login />
+          </Layout>
+        }
+      />
+      <Route
+        path="/about"
+        element={
+          <Layout>
+            <About />
+          </Layout>
+        }
+      />
+      <Route
+        path="/product"
+        element={
+          <Layout>
+            <ProductPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/pricing"
+        element={
+          <Layout>
+            <PricingPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/support"
+        element={
+          <Layout>
+            <SupportPage />
+          </Layout>
+        }
+      />
 
-        <Route path="*" element={<NotFound />} />
-      </Route>
+      {/* 404 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>,
 );
