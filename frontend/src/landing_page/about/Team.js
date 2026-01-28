@@ -3,34 +3,34 @@ import React from "react";
 function Team() {
   return (
     <section className="w-full">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
         {/* Title */}
-        <div className="mt-10 border-t pt-8">
-          <h1 className="text-center text-2xl sm:text-3xl font-semibold">
+        <div className="pt-8 mt-10 border-t">
+          <h1 className="text-2xl font-semibold text-center sm:text-3xl">
             People
           </h1>
         </div>
 
         {/* Content */}
         <div className="mt-8 text-gray-500">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid items-start grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Left */}
             <div className="text-center">
               <img
-                src="media/images/nithinKamath.jpg"
+                src="/media/images/nithinKamath.jpg"
                 alt="Nithin Kamath"
-                className="mx-auto w-40 sm:w-52 md:w-60 rounded-full"
+                className="w-40 mx-auto rounded-full sm:w-52 md:w-60"
               />
-              <h4 className="mt-6 text-lg sm:text-xl font-semibold text-gray-800">
+              <h4 className="mt-6 text-lg font-semibold text-gray-800 sm:text-xl">
                 Nithin Kamath
               </h4>
-              <h6 className="text-sm sm:text-base text-gray-600">
+              <h6 className="text-sm text-gray-600 sm:text-base">
                 Founder, CEO
               </h6>
             </div>
 
             {/* Right */}
-            <div className="space-y-4 text-base sm:text-lg leading-relaxed">
+            <div className="space-y-4 text-base leading-relaxed sm:text-lg">
               <p>
                 Nithin bootstrapped and founded Zerodha in 2010 to overcome the
                 hurdles he faced during his decade long stint as a trader.

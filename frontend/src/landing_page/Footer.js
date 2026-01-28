@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="w-full bg-[#FAFAFA]">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
         {/* Top Footer Links */}
-        <div className="border-t pt-10 mt-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="pt-10 mt-10 border-t">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {/* Logo + Copyright */}
             <div>
               <img
-                src="media/images/logo.svg"
+                src="/media/images/logo.svg"
                 alt="Logo"
                 className="w-36 sm:w-40"
               />
-              <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+              <p className="mt-4 text-sm leading-relaxed text-gray-600">
                 &copy; 2010 - 2024, Not Zerodha Broking Ltd. All rights
                 reserved.
               </p>
@@ -23,7 +23,7 @@ function Footer() {
 
             {/* Company */}
             <div>
-              <p className="text-gray-900 font-semibold mb-4">Company</p>
+              <p className="mb-4 font-semibold text-gray-900">Company</p>
               <div className="space-y-2 text-sm text-gray-600">
                 <Link to="/about" className="block hover:text-black">
                   About
@@ -54,7 +54,7 @@ function Footer() {
 
             {/* Support */}
             <div>
-              <p className="text-gray-900 font-semibold mb-4">Support</p>
+              <p className="mb-4 font-semibold text-gray-900">Support</p>
               <div className="space-y-2 text-sm text-gray-600">
                 <a href="#" className="block hover:text-black">
                   Contact
@@ -76,7 +76,7 @@ function Footer() {
 
             {/* Account */}
             <div>
-              <p className="text-gray-900 font-semibold mb-4">Account</p>
+              <p className="mb-4 font-semibold text-gray-900">Account</p>
               <div className="space-y-2 text-sm text-gray-600">
                 <Link to="/signup" className="block hover:text-black">
                   Open an account
@@ -92,7 +92,7 @@ function Footer() {
           </div>
 
           {/* Bottom Text */}
-          <div className="mt-10 pb-10 text-gray-500 text-sm leading-relaxed space-y-5">
+          <div className="pb-10 mt-10 space-y-5 text-sm leading-relaxed text-gray-500">
             <p>
               Zerodha Broking Ltd.: Member of NSE​ &amp;​ BSE – SEBI
               Registration no.: INZ000031633 CDSL: Depository services through

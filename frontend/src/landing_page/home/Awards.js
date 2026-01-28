@@ -8,7 +8,7 @@ function Awards() {
           {/* Left Image */}
           <div className="flex justify-center lg:justify-start py-6 sm:py-8 lg:py-10">
             <img
-              src="media/images/largestBroker.svg"
+              src="/media/images/largestBroker.svg"
               alt="Largest broker"
               className="w-full max-w-md sm:max-w-lg"
             />
@@ -43,7 +43,7 @@ function Awards() {
             {/* Press Logos */}
             <div className="mt-8">
               <img
-                src="media/images/pressLogos.png"
+                src="/media/images/pressLogos.png"
                 alt="Press logos"
                 className="w-full max-w-xl"
               />

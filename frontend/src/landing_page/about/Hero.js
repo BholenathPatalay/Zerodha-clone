@@ -3,10 +3,10 @@ import React from "react";
 function Hero() {
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="py-10 sm:py-14 lg:py-16">
-          <h1 className="text-center text-xl sm:text-2xl lg:text-3xl font-semibold leading-snug text-gray-900">
+          <h1 className="text-xl font-semibold leading-snug text-center text-gray-900 sm:text-2xl lg:text-3xl">
             We pioneered the discount broking model in India
             <br className="hidden sm:block" />
             Now, we are breaking ground with our technology.
@@ -14,10 +14,10 @@ function Hero() {
         </div>
 
         {/* Content */}
-        <div className="border-t pt-8 sm:pt-10 lg:pt-12 text-gray-500">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="pt-8 text-gray-500 border-t sm:pt-10 lg:pt-12">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Left */}
-            <div className="space-y-4 text-base sm:text-lg leading-relaxed">
+            <div className="space-y-4 text-base leading-relaxed sm:text-lg">
               <p>
                 We kick-started operations on the 15th of August, 2010 with the
                 goal of breaking all barriers that traders and investors face in
@@ -39,7 +39,7 @@ function Hero() {
             </div>
 
             {/* Right */}
-            <div className="space-y-4 text-base sm:text-lg leading-relaxed">
+            <div className="space-y-4 text-base leading-relaxed sm:text-lg">
               <p>
                 In addition, we run a number of popular open online educational
                 and community initiatives to empower retail traders and
