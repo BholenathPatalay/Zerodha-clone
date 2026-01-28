@@ -8,7 +8,7 @@ function Education() {
           {/* Left Image */}
           <div className="flex justify-center lg:justify-start">
             <img
-              src="media/images/education.svg"
+              src="/media/images/education.svg"
               alt="Education"
               className="w-full max-w-xs sm:max-w-sm lg:max-w-md"
             />

@@ -8,7 +8,7 @@ function Hero() {
         {/* Dashboard Image */}
         <div className="pt-10 sm:pt-14 lg:pt-16 flex justify-center">
           <img
-            src="media/images/homeHero.png"
+            src="/media/images/homeHero.png"
             alt="Zerodha dashboard preview"
             className="w-full max-w-[950px] sm:max-w-[1050px] lg:max-w-[1100px] object-contain"
           />
