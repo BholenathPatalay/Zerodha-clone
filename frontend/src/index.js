@@ -28,7 +28,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      {/* Landing pages */}
       <Route
         path="/"
         element={
@@ -85,8 +84,6 @@ root.render(
           </Layout>
         }
       />
-
-      {/* 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>,
