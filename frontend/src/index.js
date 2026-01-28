@@ -29,14 +29,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/product" element={<ProductPage />} />
-        <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/support" element={<SupportPage />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="login" element={<Login />} />
+        <Route path="about" element={<About />} />
+        <Route path="product" element={<ProductPage />} />
+        <Route path="pricing" element={<PricingPage />} />
+        <Route path="support" element={<SupportPage />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>
