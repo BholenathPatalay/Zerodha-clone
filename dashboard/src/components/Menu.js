@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import api from "../api/axios";
+
+const FRONTEND_URL = "https://zerodha-frontend-uex2.onrender.com";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [username, setUsername] = useState("USER");
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,12 +18,13 @@ const Menu = () => {
         });
         setUsername(res.data.user || "USER");
       } catch (err) {
-        navigate("/login", { replace: true });
+        // Not authenticated → go to frontend login
+        window.location.href = `${FRONTEND_URL}/login`;
       }
     };
 
     fetchUser();
-  }, [navigate]);
+  }, []);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -46,7 +47,7 @@ const Menu = () => {
       console.log("Logout error:", err);
     } finally {
       localStorage.removeItem("user");
-      navigate("/login", { replace: true });
+      window.location.href = `${FRONTEND_URL}/login`;
     }
   };
 
