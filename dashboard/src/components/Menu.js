@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios";
 
 const Menu = () => {
@@ -8,15 +8,9 @@ const Menu = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [username, setUsername] = useState("USER");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const FRONTEND_URL =
-      process.env.REACT_APP_FRONTEND_URL ||
-      "https://zerodha-frontend-uex2.onrender.com";
-
-    console.log("FRONTEND_URL =", process.env.REACT_APP_FRONTEND_URL);
-
-    console.log("FRONTEND_URL =", process.env.REACT_APP_FRONTEND_URL);
-
     const fetchUser = async () => {
       try {
         const res = await api.get("/checkAuth", {
@@ -24,13 +18,12 @@ const Menu = () => {
         });
         setUsername(res.data.user || "USER");
       } catch (err) {
-        console.log("Redirecting to:", FRONTEND_URL);
-        window.location.href = `${FRONTEND_URL}/login`;
+        navigate("/login", { replace: true });
       }
     };
 
     fetchUser();
-  }, []);
+  }, [navigate]);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -47,16 +40,13 @@ const Menu = () => {
   };
 
   const handleLogout = async () => {
-    const FRONTEND_URL =
-      process.env.REACT_APP_FRONTEND_URL ||
-      "https://zerodha-frontend-uex2.onrender.com";
-
     try {
       await api.post("/logout", {}, { withCredentials: true });
     } catch (err) {
       console.log("Logout error:", err);
     } finally {
-      window.location.href = `${FRONTEND_URL}/login`;
+      localStorage.removeItem("user");
+      navigate("/login", { replace: true });
     }
   };
 
