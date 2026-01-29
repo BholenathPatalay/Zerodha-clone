@@ -47,9 +47,9 @@ function Hero() {
               </p>
 
               <p>
-                <a href="#" className="text-blue-600 hover:text-blue-700">
+                <button className="text-blue-600 hover:text-blue-700">
                   Rainmatter
-                </a>
+                </button>
                 , our fintech fund and incubator, has invested in several
                 fintech startups with the goal of growing the Indian capital
                 markets.
