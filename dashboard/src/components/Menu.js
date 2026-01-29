@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { MenuIcon } from "lucide-react";
 import api from "../api/axios";
 
-const FRONTEND_URL = "https://zerodha-frontend-uex2.onrender.com/login";
+const FRONTEND_URL = "https://zerodha-frontend-uex2.onrender.com";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -19,7 +20,7 @@ const Menu = () => {
         setUsername(res.data.user || "USER");
       } catch (err) {
         // Not authenticated → go to frontend login
-        window.location.href = `${FRONTEND_URL}`;
+        window.location.href = `${FRONTEND_URL}/login`;
       }
     };
 
@@ -47,7 +48,7 @@ const Menu = () => {
       console.log("Logout error:", err);
     } finally {
       localStorage.removeItem("user");
-      window.location.href = `${FRONTEND_URL}`;
+      window.location.href = `${FRONTEND_URL}/login`;
     }
   };
 
@@ -61,7 +62,9 @@ const Menu = () => {
       <div className="logo-section">
         <img src="/logo.png" alt="logo" className="logo-img" />
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
-          <span className="hamburger-icon">☰</span>
+          <span className="hamburger-icon">
+            <MenuIcon size={20} />
+          </span>
         </button>
       </div>
 
