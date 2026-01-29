@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api/axios";
 
-const FRONTEND_URL = "https://zerodha-frontend-uex2.onrender.com";
+const FRONTEND_URL = "https://zerodha-frontend-uex2.onrender.com/login";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -19,7 +19,7 @@ const Menu = () => {
         setUsername(res.data.user || "USER");
       } catch (err) {
         // Not authenticated → go to frontend login
-        window.location.href = `${FRONTEND_URL}/login`;
+        window.location.href = `${FRONTEND_URL}`;
       }
     };
 
@@ -47,7 +47,7 @@ const Menu = () => {
       console.log("Logout error:", err);
     } finally {
       localStorage.removeItem("user");
-      window.location.href = `${FRONTEND_URL}/login`;
+      window.location.href = `${FRONTEND_URL}`;
     }
   };
 
