@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { MenuIcon } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MenuIcon, X } from "lucide-react";
 import api from "../api/axios";
 
-const Menu = () => {
-  const navigate = useNavigate();
+/**
+ * Frontend app URL (login lives here)
+ */
+const FRONTEND_LOGIN_URL = "https://zerodha-frontend-uex2.onrender.com/login";
 
+const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,7 +16,7 @@ const Menu = () => {
   const [checkingAuth, setCheckingAuth] = useState(true);
 
   /* =========================
-     AUTH CHECK ON LOAD
+     AUTH CHECK (dashboard app)
   ========================= */
   useEffect(() => {
     const fetchUser = async () => {
@@ -23,14 +26,15 @@ const Menu = () => {
         });
         setUsername(res.data.user || "USER");
       } catch (err) {
-        navigate("/login", { replace: true });
+        // Login is in ANOTHER APP → hard redirect is REQUIRED
+        window.location.href = FRONTEND_LOGIN_URL;
       } finally {
         setCheckingAuth(false);
       }
     };
 
     fetchUser();
-  }, [navigate]);
+  }, []);
 
   if (checkingAuth) return null;
 
@@ -57,7 +61,8 @@ const Menu = () => {
     } catch (err) {
       console.log("Logout error:", err);
     } finally {
-      navigate("/login", { replace: true });
+      // Logout → go back to frontend login app
+      window.location.href = FRONTEND_LOGIN_URL;
     }
   };
 
@@ -140,7 +145,7 @@ const Menu = () => {
                 className="close-menu"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                ×
+                <X size={20} />
               </button>
             </div>
 
