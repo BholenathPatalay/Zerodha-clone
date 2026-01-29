@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MenuIcon } from "lucide-react";
 import api from "../api/axios";
 
-const FRONTEND_URL = "https://zerodha-frontend-uex2.onrender.com";
-
 const Menu = () => {
+  const navigate = useNavigate();
+
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [username, setUsername] = useState("USER");
+  const [checkingAuth, setCheckingAuth] = useState(true);
 
+  /* =========================
+     AUTH CHECK ON LOAD
+  ========================= */
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -19,14 +23,20 @@ const Menu = () => {
         });
         setUsername(res.data.user || "USER");
       } catch (err) {
-        // Not authenticated → go to frontend login
-        window.location.href = `${FRONTEND_URL}/login`;
+        navigate("/login", { replace: true });
+      } finally {
+        setCheckingAuth(false);
       }
     };
 
     fetchUser();
-  }, []);
+  }, [navigate]);
 
+  if (checkingAuth) return null;
+
+  /* =========================
+     HANDLERS
+  ========================= */
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
     setIsProfileDropdownOpen(false);
@@ -47,8 +57,7 @@ const Menu = () => {
     } catch (err) {
       console.log("Logout error:", err);
     } finally {
-      localStorage.removeItem("user");
-      window.location.href = `${FRONTEND_URL}/login`;
+      navigate("/login", { replace: true });
     }
   };
 
@@ -58,13 +67,11 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      {/* Logo Section */}
+      {/* Logo */}
       <div className="logo-section">
         <img src="/logo.png" alt="logo" className="logo-img" />
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
-          <span className="hamburger-icon">
-            <MenuIcon size={20} />
-          </span>
+          <MenuIcon size={20} />
         </button>
       </div>
 
@@ -99,6 +106,7 @@ const Menu = () => {
 
         <hr className="menu-divider" />
 
+        {/* Profile */}
         <div className="profile" onClick={handleProfileClick}>
           <div className="avatar">{avatarText}</div>
           <p className="username">{username}</p>
