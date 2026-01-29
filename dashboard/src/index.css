@@ -26,8 +26,7 @@ code {
 }
 
 .content {
-  flex: 0 0 68%;
-  width: 68%;
+  flex: 1;
   height: 100%;
   box-sizing: border-box;
   overflow-y: auto;
@@ -292,8 +291,7 @@ code {
 }
 
 .indices-container {
-  flex: 0 0 68%;
-  width: 68%;
+  flex-basis: 32%;
   height: 100%;
   padding: 10px 20px;
   border-right: 1px solid rgb(224, 224, 224);
@@ -411,16 +409,14 @@ code {
 
 /* ===== WATCHLIST ===== */
 .watchlist-container {
-  flex: 0 0 32%;
   width: 32%;
   height: 90vh;
   box-sizing: border-box;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid rgb(224, 224, 224);
-  background: #fff;
 }
 
 .watchlist-mobile-header {
@@ -462,13 +458,16 @@ code {
 }
 
 .search-container {
-  padding: 20px;
-  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   position: relative;
+  padding: 16px;
 }
 
 .search-input-wrapper {
   position: relative;
+  flex: 1;
 }
 
 .search-icon {
@@ -487,7 +486,6 @@ code {
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   background: white;
-  box-sizing: border-box;
 }
 
 .search:focus {
@@ -499,8 +497,6 @@ code {
 .counts {
   position: absolute;
   right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 0.9rem;
   font-weight: 400;
   color: rgb(177, 177, 177);
@@ -516,103 +512,206 @@ code {
 .chart-container-desktop {
   display: block;
   padding: 20px;
-  border-bottom: 1px solid #eee;
 }
 
 /* Watchlist Items */
 .list {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
+  padding-bottom: 12%;
   flex: 1;
   overflow-y: auto;
 }
 
+.list.list-view .watchlist-item {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
 .watchlist-item {
-  padding: 16px 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 0.8px solid rgb(235, 234, 234);
+  padding: 12px 10px 12px 14px;
+  position: relative;
   transition: background-color 0.2s ease;
-  cursor: pointer;
+  cursor: move;
+}
+
+.watchlist-item.active {
+  background-color: #f8f9fa;
 }
 
 .watchlist-item:hover {
-  background-color: #f8f9fa;
+  background-color: #f3f3f3;
+}
+
+.list-view-item .item {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.list-view-item .stock-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-weight: 300;
+  font-size: 0.8rem;
+  position: relative;
+  width: 100%;
 }
 
 .stock-info {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  flex: 1;
 }
 
 .stock-name {
   font-weight: 500;
   font-size: 0.9rem;
-  color: rgb(71, 71, 71);
   margin: 0;
 }
 
-.stock-details {
-  display: flex;
+.stock-details-mobile {
+  display: none;
   align-items: center;
-  gap: 12px;
-  font-size: 0.85rem;
+  gap: 8px;
 }
 
-.price {
+.price-mobile {
   font-weight: 500;
+  font-size: 0.9rem;
   color: rgb(71, 71, 71);
 }
 
-.percent {
-  font-weight: 500;
-}
-
-.percent.up {
-  color: rgb(72, 194, 55);
-}
-
-.percent.down {
-  color: rgb(223, 73, 73);
-}
-
-.actions {
+.itemInfo {
   display: flex;
-  gap: 8px;
-  margin-left: 15px;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.buy-btn,
-.sell-btn {
-  padding: 6px 12px;
+.itemInfo > * {
+  margin-right: 8px;
+}
+
+.item-info span:nth-child(1) {
+  color: rgb(141, 141, 141);
+  flex: 1;
+}
+
+.item-info span:nth-child(2) {
+  color: rgb(223, 73, 73);
+  margin-right: 12px;
+  flex: 2;
+}
+
+.item-info span:nth-child(3) {
+  color: rgb(223, 73, 73);
+  flex: 1;
+}
+
+/* Actions */
+.actions {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: auto;
+  height: auto;
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.actions.mobile-actions {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  transform: none !important;
+  display: flex !important;
+  width: 100%;
+  justify-content: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.actions > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.mobile-actions span {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions > span button {
   border: none;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  outline: none;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  white-space: nowrap;
 }
 
-.buy-btn {
-  background: #4184f3;
-  color: white;
+.mobile-actions button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 10px;
+  font-size: 0.85rem;
 }
 
-.sell-btn {
-  background: #ff5722;
-  color: white;
+.buy {
+  background-color: #4184f3;
+  color: #fff;
 }
 
-.buy-btn:hover,
-.sell-btn:hover {
-  opacity: 0.9;
+.sell {
+  background-color: #ff5722;
+  color: #fff;
+}
+
+.action {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #9b9b9b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action:hover {
+  background-color: rgb(212, 212, 212);
+}
+
+.icon {
+  transform: scale(0.9);
+  color: rgb(65, 65, 65);
+}
+
+/* No Results */
+.no-results {
+  padding: 40px 20px;
+  text-align: center;
+  color: rgb(136, 136, 136);
+}
+
+.no-results p {
+  margin: 0;
+  font-size: 0.95rem;
 }
 
 /* Watchlist Bottom Navigation */
@@ -1146,72 +1245,117 @@ code {
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
-/* Large Desktops (1440px and above) */
-@media screen and (min-width: 1440px) {
+/* Small Desktops & Laptops (1200px and below) */
+@media screen and (max-width: 1200px) {
+  .dashboard-container {
+    flex-direction: column;
+    height: auto;
+  }
+
   .content {
-    padding: 30px;
+    height: auto;
+    min-height: 70vh;
+    width: 100%;
+    padding: 2%;
   }
 
   .watchlist-container {
-    padding-right: 10px;
+    width: 100%;
+    height: 50vh;
+    order: 3;
+  }
+
+  .chart-container-desktop {
+    padding: 16px;
+  }
+
+  .watchlist-number {
+    position: sticky;
   }
 }
 
-/* Small Desktops & Laptops (1200px to 1440px) - CHANGED THIS */
-@media screen and (max-width: 1440px) and (min-width: 992px) {
-  .dashboard-container {
-    flex-direction: row;
-    height: 90vh;
-  }
-
-  .content {
-    flex: 0 0 68%;
-    width: 68%;
-  }
-
-  .watchlist-container {
-    flex: 0 0 32%;
-    width: 32%;
+/* Tablets (992px and below) */
+@media screen and (max-width: 992px) {
+  .topbar-container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
   }
 
   .indices-container {
-    flex: 0 0 68%;
-    width: 68%;
-  }
-}
-
-/* Tablets (768px to 992px) */
-@media screen and (max-width: 992px) and (min-width: 768px) {
-  .dashboard-container {
-    flex-direction: row;
-    height: 90vh;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
   }
 
-  .content {
-    flex: 0 0 60%;
-    width: 60%;
+  .nifty,
+  .sensex {
+    flex-basis: auto;
   }
 
-  .watchlist-container {
-    flex: 0 0 40%;
-    width: 40%;
-  }
-
-  .indices-container {
-    flex: 0 0 60%;
-    width: 60%;
-  }
-
-  .menu-container {
-    padding: 10px 15px;
-  }
-
-  .desktop-menu {
+  .row {
+    flex-direction: column;
     gap: 20px;
   }
 
-  .menus {
+  .col {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .data {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .itemInfo .price {
+    font-size: 0.85rem;
+  }
+
+  .percent {
+    font-size: 0.8rem;
+  }
+
+  .data {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .data hr {
+    display: none;
+  }
+
+  .second {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    width: 100%;
+  }
+
+  .second p {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .second p span {
+    margin-left: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .data .first h3 {
+    font-size: 2rem;
   }
 }
 
@@ -1234,128 +1378,19 @@ code {
     justify-content: flex-end;
   }
 
-  .profile .username {
-    display: none;
-  }
-
   .profile-dropdown {
-    top: 45px;
-    right: 15px;
+    position: fixed !important;
+    top: 60px !important;
+    right: 10px !important;
+    left: auto !important;
+    min-width: 120px !important;
   }
 
-  /* Dashboard Layout */
-  .dashboard-container {
-    flex-direction: column;
-    height: auto;
-    min-height: 90vh;
-  }
-
-  .content {
-    flex: 1;
-    width: 100%;
-    height: auto;
-    min-height: 60vh;
-    order: 1;
-    padding: 15px;
-  }
-
-  .watchlist-container {
-    flex: 1;
-    width: 100%;
-    height: 50vh;
-    order: 3;
-    border-left: none;
-    border-top: 1px solid rgb(224, 224, 224);
-  }
-
-  /* Topbar */
-  .topbar-container {
-    flex-direction: column;
-    height: auto;
-    min-height: auto;
-  }
-
-  .indices-container {
-    flex: 1;
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgb(224, 224, 224);
-    padding: 15px;
-  }
-
-  .indices-content {
-    flex-wrap: wrap;
-    gap: 15px;
-    row-gap: 10px;
-  }
-
-  .index-item {
-    flex: 1 0 calc(50% - 15px);
-  }
-
-  .market-status {
-    margin-left: auto;
-  }
-
-  .index-values {
+  /* Tables */
+  .table .data {
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
-  }
-
-  .index-value {
-    font-size: 0.85rem;
-  }
-
-  .index-change {
-    font-size: 0.65rem;
-  }
-
-  .index {
-    font-size: 0.7rem;
-  }
-
-  /* Watchlist */
-  .watchlist-mobile-header {
-    display: flex;
-  }
-
-  .chart-container-desktop {
-    display: none;
-  }
-
-  .chart-container-mobile {
-    display: block;
-  }
-
-  .search-container {
-    padding: 15px;
-  }
-
-  .search {
-    font-size: 0.85rem;
-    padding: 10px 10px 10px 36px;
-  }
-
-  .counts {
-    right: 15px;
-    font-size: 0.85rem;
-  }
-
-  .watchlist-item {
-    padding: 12px 15px;
-  }
-
-  .stock-name {
-    font-size: 0.85rem;
-  }
-
-  .stock-details {
-    font-size: 0.8rem;
-  }
-
-  .actions {
-    display: none;
+    gap: 15px;
   }
 
   /* Summary Component */
@@ -1391,6 +1426,86 @@ code {
   .username h6 {
     font-size: 1.3rem;
     margin-bottom: 15px;
+  }
+
+  /* Watchlist */
+  .watchlist-mobile-header {
+    display: flex;
+  }
+
+  .chart-container-desktop {
+    display: none;
+  }
+
+  .chart-container-mobile {
+    display: block;
+  }
+
+  .watchlist-container {
+    height: auto;
+    min-height: 70vh;
+  }
+
+  .stock-details-mobile {
+    display: flex;
+  }
+
+  .itemInfo {
+    display: none;
+  }
+
+  .watchlist-item {
+    padding: 16px;
+  }
+
+  .watchlist-item:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
+
+  .watchlist-item:hover .actions:not(.mobile-actions) {
+    display: none !important;
+  }
+
+  .actions:not(.mobile-actions) {
+    display: none !important;
+  }
+
+  .watchlist-item.active .mobile-actions {
+    display: flex !important;
+  }
+
+  /* Indices */
+  .indices-content {
+    flex-wrap: wrap;
+    gap: 15px;
+    row-gap: 10px;
+  }
+
+  .index-item {
+    flex: 1 0 calc(50% - 15px);
+  }
+
+  .market-status {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  .index-values {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .index-value {
+    font-size: 0.85rem;
+  }
+
+  .index-change {
+    font-size: 0.65rem;
+  }
+
+  .index {
+    font-size: 0.7rem;
   }
 }
 
@@ -1621,10 +1736,6 @@ code {
     display: flex;
   }
 
-  .profile .username {
-    display: block;
-  }
-
   .mobile-cards {
     display: none;
   }
@@ -1641,20 +1752,12 @@ code {
     display: none;
   }
 
-  .watchlist-mobile-header {
-    display: none;
+  .watchlist-item:hover > .actions:not(.mobile-actions) {
+    display: flex !important;
   }
 
-  .chart-container-desktop {
-    display: block;
-  }
-
-  .chart-container-mobile {
-    display: none;
-  }
-
-  .actions {
-    display: flex;
+  .mobile-actions {
+    display: none !important;
   }
 }
 
