@@ -7,9 +7,9 @@ function Hero() {
         {/* Top Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-6">
           <h4 className="text-lg font-semibold">Support Portal</h4>
-          <a href="#" className="text-white hover:underline font-medium">
+          <button className="text-white hover:underline font-medium">
             Track Tickets
-          </a>
+          </button>
         </div>
 
         {/* Main Content */}
@@ -26,18 +26,18 @@ function Hero() {
             />
 
             <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3">
-              <a href="#" className="text-white hover:underline">
+              <button className="text-white hover:underline">
                 Track account opening
-              </a>
-              <a href="#" className="text-white hover:underline">
+              </button>
+              <button className="text-white hover:underline">
                 Track segment activation
-              </a>
-              <a href="#" className="text-white hover:underline">
+              </button>
+              <button className="text-white hover:underline">
                 Intraday margins
-              </a>
-              <a href="#" className="text-white hover:underline">
+              </button>
+              <button className="text-white hover:underline">
                 Kite user manual
-              </a>
+              </button>
             </div>
           </div>
 
@@ -47,14 +47,14 @@ function Hero() {
 
             <ol className="mt-5 list-decimal pl-5 space-y-3">
               <li>
-                <a href="#" className="text-white hover:underline">
+                <button className="text-white hover:underline">
                   Current Takeovers and Delisting - January 2024
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-white hover:underline">
+                <button className="text-white hover:underline">
                   Latest Intraday leverages - MIS &amp; CO
-                </a>
+                </button>
               </li>
             </ol>
           </div>

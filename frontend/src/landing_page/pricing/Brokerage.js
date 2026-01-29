@@ -8,11 +8,11 @@ function Brokerage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 text-center">
             {/* Left Side */}
             <div className="lg:col-span-8">
-              <a href="#" className="inline-block">
+              <button className="inline-block">
                 <h3 className="text-base sm:text-lg font-semibold text-gray-900 hover:text-blue-600">
                   Brokerage calculator
                 </h3>
-              </a>
+              </button>
 
               <ul className="mt-6 text-left space-y-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
                 <li>
@@ -42,11 +42,11 @@ function Brokerage() {
 
             {/* Right Side */}
             <div className="lg:col-span-4">
-              <a href="#" className="inline-block">
+              <button className="inline-block">
                 <h3 className="text-base sm:text-lg font-semibold text-gray-900 hover:text-blue-600">
                   List of charges
                 </h3>
-              </a>
+              </button>
             </div>
           </div>
         </div>

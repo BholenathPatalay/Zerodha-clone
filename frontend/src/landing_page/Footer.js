@@ -34,21 +34,17 @@ function Footer() {
                 <Link to="/pricing" className="block hover:text-black">
                   Pricing
                 </Link>
-                <a href="#" className="block hover:text-black">
+                <button className="block hover:text-black">
                   Referral programme
-                </a>
-                <a href="#" className="block hover:text-black">
-                  Careers
-                </a>
-                <a href="#" className="block hover:text-black">
-                  Zerodha.tech
-                </a>
-                <a href="#" className="block hover:text-black">
+                </button>
+                <button className="block hover:text-black">Careers</button>
+                <button className="block hover:text-black">Zerodha.tech</button>
+                <button className="block hover:text-black">
                   Press &amp; media
-                </a>
-                <a href="#" className="block hover:text-black">
+                </button>
+                <button className="block hover:text-black">
                   Zerodha cares (CSR)
-                </a>
+                </button>
               </div>
             </div>
 
@@ -56,21 +52,19 @@ function Footer() {
             <div>
               <p className="mb-4 font-semibold text-gray-900">Support</p>
               <div className="space-y-2 text-sm text-gray-600">
-                <a href="#" className="block hover:text-black">
-                  Contact
-                </a>
+                <button className="block hover:text-black">Contact</button>
                 <Link to="/support" className="block hover:text-black">
                   Support portal
                 </Link>
-                <a href="#" className="block hover:text-black">
+                <button className="block hover:text-black">
                   Z-Connect blog
-                </a>
-                <a href="#" className="block hover:text-black">
+                </button>
+                <button className="block hover:text-black">
                   List of charges
-                </a>
-                <a href="#" className="block hover:text-black">
+                </button>
+                <button className="block hover:text-black">
                   Downloads &amp; resources
-                </a>
+                </button>
               </div>
             </div>
 
@@ -81,12 +75,12 @@ function Footer() {
                 <Link to="/signup" className="block hover:text-black">
                   Open an account
                 </Link>
-                <a href="#" className="block hover:text-black">
+                <button className="block hover:text-black">
                   Fund transfer
-                </a>
-                <a href="#" className="block hover:text-black">
+                </button>
+                <button className="block hover:text-black">
                   60 day challenge
-                </a>
+                </button>
               </div>
             </div>
           </div>

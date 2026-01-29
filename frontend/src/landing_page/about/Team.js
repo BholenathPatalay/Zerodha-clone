@@ -47,17 +47,17 @@ function Team() {
 
               <p>
                 Connect on{" "}
-                <a href="" className="text-blue-600 hover:text-blue-700">
+                <button className="text-blue-600 hover:text-blue-700">
                   Homepage
-                </a>{" "}
+                </button>{" "}
                 /{" "}
-                <a href="" className="text-blue-600 hover:text-blue-700">
+                <button className="text-blue-600 hover:text-blue-700">
                   TradingQnA
-                </a>{" "}
+                </button>{" "}
                 /{" "}
-                <a href="" className="text-blue-600 hover:text-blue-700">
+                <button className="text-blue-600 hover:text-blue-700">
                   Twitter
-                </a>
+                </button>
               </p>
             </div>
           </div>

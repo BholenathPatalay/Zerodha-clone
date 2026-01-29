@@ -72,12 +72,9 @@ function Stats() {
                 Explore our products <span className="text-lg">→</span>
               </Link>
 
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 font-medium text-blue-600 hover:text-blue-700"
-              >
+              <button className="inline-flex items-center gap-2 font-medium text-blue-600 hover:text-blue-700">
                 Try Kite demo <span className="text-lg">→</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>

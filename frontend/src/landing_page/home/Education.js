@@ -25,24 +25,18 @@ function Education() {
               world covering everything from the basics to advanced trading.
             </p>
 
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 mt-3 font-medium text-blue-600 hover:text-blue-700"
-            >
+            <button className="mt-4 text-blue-600 font-medium">
               Varsity <span className="text-lg">→</span>
-            </a>
+            </button>
 
             <p className="mt-8 text-sm leading-relaxed text-gray-600 sm:text-base lg:text-lg">
               TradingQ&A, the most active trading and investment community in
               India for all your market related queries.
             </p>
 
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 mt-3 font-medium text-blue-600 hover:text-blue-700"
-            >
+            <button className="inline-flex items-center gap-2 mt-3 font-medium text-blue-600 hover:text-blue-700">
               TradingQ&amp;A <span className="text-lg">→</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
