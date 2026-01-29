@@ -1,9 +1,8 @@
 {
   "root": "build/",
-  "clean_urls": true,
   "routes": [
     {
-      "src": ".*",
+      "src": "/.*",
       "dest": "/index.html"
     }
   ]
