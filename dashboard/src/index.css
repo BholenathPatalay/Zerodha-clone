@@ -45,7 +45,7 @@ code {
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-*/ .topbar-container {
+.topbar-container {
   width: 100%;
   display: flex;
   flex-direction: column;
