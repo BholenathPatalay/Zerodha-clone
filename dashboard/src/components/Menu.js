@@ -12,6 +12,10 @@ const Menu = () => {
   const [username, setUsername] = useState("USER");
   const [checkingAuth, setCheckingAuth] = useState(true);
 
+  const FRONTEND_URL =
+    process.env.REACT_APP_FRONTEND_URL ||
+    "https://zerodha-frontend-uex2.onrender.com";
+
   /* =========================
      AUTH CHECK ON LOAD
   ========================= */
@@ -57,7 +61,7 @@ const Menu = () => {
     } catch (err) {
       console.log("Logout error:", err);
     } finally {
-      navigate("/login", { replace: true });
+      window.location.assign(`${FRONTEND_URL}/login`);
     }
   };
 
