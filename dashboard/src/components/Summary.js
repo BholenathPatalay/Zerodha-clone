@@ -19,7 +19,7 @@ const Summary = () => {
         const holdingsRes = await api.get("/api/holdings");
         setHoldings(holdingsRes.data);
       } catch (err) {
-        window.location.assign(`${FRONTEND_URL}/login`);
+        window.location.assign(`${FRONTEND_URL}`);
       }
     };
 
